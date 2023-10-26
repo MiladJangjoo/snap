@@ -9,13 +9,13 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object(Config)
-# added line 18 see what happens
+
 db =SQLAlchemy(app)
 migrate = Migrate(app,db)
 api =Api(app)
 jwt = JWTManager(app)
 CORS(app)
-CORS(db)
+
 from resources.passengers import bp as passenger_bp
 api.register_blueprint(passenger_bp)
 from resources.requests import bp as requests_bp
